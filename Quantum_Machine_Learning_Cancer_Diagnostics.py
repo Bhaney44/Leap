@@ -84,6 +84,70 @@ def AdaBoost(X_train, y_train, X_test, y_test):
     
 clf3 = AdaBoost(X_train, y_train, X_test, y_test)
 
+#QBoost Function
+
+def QBoost(X_train, y_train, X_test, y_test):
+    NUM_READS = 1000
+    DW_PARAMS = {'num_reads': NUM_READS,
+                 'auto_scale': True,
+                 'num_spin_reversal_transforms': 10,
+                 'postprocess': 'optimization',
+                 }
+
+    from dwave.system.samplers import DWaveSampler
+    from dwave.system.composites import EmbeddingComposite
+
+    dwave_sampler = DWaveSampler(solver={'qpu': True}) 
+    emb_sampler = EmbeddingComposite(dwave_sampler)
+
+    from qboost import WeakClassifiers, QBoostClassifier
+
+    clf4 = QBoostClassifier(n_estimators=30, max_depth=2)
+    clf4.fit(X_train, y_train, emb_sampler, lmd=1.0, **DW_PARAMS)
+    y_train4 = clf4.predict(X_train)
+    y_test4 = clf4.predict(X_test)
+
+    from sklearn.metrics import accuracy_score
+
+    print('Accuracy for training data: \t', (accuracy_score(y_train, y_train4)))
+    print('Accuracy for test data: \t', (accuracy_score(y_test, y_test4)))
+    
+    return clf4
+    
+clf4 = QBoost(X_train, y_train, X_test, y_test)
+
+#QBoost Plus Function
+
+def QBoostPlus(X_train, y_train, X_test, y_test, clf1, clf2, clf3, clf4):
+    NUM_READS = 1000
+    DW_PARAMS = {'num_reads': NUM_READS,
+                 'auto_scale': True,
+                 'num_spin_reversal_transforms': 10,
+                 'postprocess': 'optimization',
+                 }
+
+    from dwave.system.samplers import DWaveSampler
+    from dwave.system.composites import EmbeddingComposite
+
+    dwave_sampler = DWaveSampler(solver={'qpu': True})
+    emb_sampler = EmbeddingComposite(dwave_sampler)
+    
+    from qboost import QboostPlus
+
+    clf5 = QboostPlus([clf1, clf2, clf3, clf4])
+    clf5.fit(X_train, y_train, emb_sampler, lmd=0.2, **DW_PARAMS)
+    y_train5 = clf5.predict(X_train)
+    y_test5 = clf5.predict(X_test)
+
+    from sklearn.metrics import accuracy_score
+
+    print('Accuracy for training data: \t', (accuracy_score(y_train, y_train5)))
+    print('Accuracy for test data: \t', (accuracy_score(y_test, y_test5)))
+    
+    return clf5
+    
+clf5 = QBoostPlus(X_train, y_train, X_test, y_test, clf1, clf2, clf3, clf4)
+
 #Print Results
 
 print('---------------------------------------')
@@ -99,4 +163,11 @@ print('---------------------------------------')
 print('AdaBoost: ')
 clf3 = AdaBoost(X_train, y_train, X_test, y_test)
 print('---------------------------------------')
+# QBoost
+print('QBoost: ')
+clf4 = QBoost(X_train, y_train, X_test, y_test) 
+print('---------------------------------------')
+# QBoostPlus
+print('QBoostPlus: ')
+clf5 = QBoostPlus(X_train, y_train, X_test, y_test, clf1, clf2, clf3, clf4) 
 
