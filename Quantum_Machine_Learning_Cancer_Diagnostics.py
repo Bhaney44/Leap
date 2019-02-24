@@ -27,6 +27,7 @@ print("Training data size: \t%d samples with %d features" %(X_train.shape[0], X_
 print("Testing data size: \t%d samples" %(X_test.shape[0]))
 print('---------------------------------------')
 
+#Decision Tree, Random Forest, and Adaboost are Classical Algorithms
 #Decision Tree Function
 
 def Decision_Tree(X_train, y_train, X_test, y_test):
@@ -84,6 +85,8 @@ def AdaBoost(X_train, y_train, X_test, y_test):
     
 clf3 = AdaBoost(X_train, y_train, X_test, y_test)
 
+#QBoost and QBoost Plus are quantum algorithms
+#QBoost and QBoost Plus require DWave resources to successfully run
 #QBoost Function
 
 def QBoost(X_train, y_train, X_test, y_test):
