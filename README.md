@@ -1,2 +1,2 @@
 # Leap
-This repository contains algorithms executed with resources from D-Wave's Quantum Computer. 
+This repository contains algorithms executed on D-Wave's Quantum Computer. 
