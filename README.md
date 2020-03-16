@@ -7,7 +7,7 @@ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3554925
 
 for an overview of quantum computing technology and intellectual property.
 
-Check out my paper:
+Check out my blog Quantum Computing:
 
 https://medium.com/@brian.s.haney44/quantum-computing-4dfc2a6cc83f
 
