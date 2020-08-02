@@ -1,5 +1,11 @@
 # Leap
-This repository contains algorithms executed on D-Wave's Quantum Computer. 
+This repository contains algorithms executed on D-Wave's Quantum Computer. квантовые компьютеры являются мощными.они обрабатывают информацию очень быстро.
+
+
+
+My quanum machine learning paper:
+
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3626534
 
 Check out my paper Quantum Patents:
 
