@@ -1,5 +1,5 @@
 # Leap
-This repository contains algorithms executed on D-Wave's Quantum Computer. квантовые компьютеры являются мощными.они обрабатывают информацию очень быстро.
+This repository contains algorithms executed on D-Wave's Quantum Computer. квантовые компьютеры являются мощными. они обрабатывают информацию очень быстро.
 
 
 
