@@ -3,7 +3,7 @@ This repository contains algorithms executed on D-Wave's Quantum Computer. кв�
 
 
 
-My quanum machine learning paper:
+My quantum machine learning paper:
 
 https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3626534
 
