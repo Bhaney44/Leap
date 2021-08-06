@@ -1,0 +1,8 @@
+
+import hashlib
+m = hashlib.sha256()
+
+m.update(b"Buy Dungeon")
+m.digest()
+
+#b'\xac\x922\xb9\t\xba\xff#N\x954\x82\xa4(b\xaf\xc7g\xb2\xf1\x07\x14@s\xc6%\xc3\xc3\x16\xd5VN'
